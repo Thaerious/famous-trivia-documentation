@@ -1,0 +1,87 @@
+Pre-requisites
+=================
+
+Node & NPM
+-----------------
+The app is written in ES6 style javascript using NodeJS.
+Visit https://nodejs.org/en/ to download and install your version of NodeJS.
+
+https://nodejs.org/en/
+
+Express
+-----------------
+The app runs on Express; a NodeJS web server.  By default, it runs on
+port 8000.  SSL has not been setup in the app, it is recommended that
+a reverse-proxy is used to provide SSL security.
+
+https://expressjs.com/
+
+NGINX
+-----------------
+The app is intended to run behind a proxy, and has been built with NGINX in mind.
+An example server file has been provided <here> and should be put in the
+``/etc/nginx/sites-available`` folder.
+
+https://www.nginx.com/
+
+NGINX Commands
+^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+    systemctl status nginx
+    systemctl start nginx
+    systemctl stop nginx
+    systemctl restart nginx
+    systemctl enable nginx
+    systemctl disable nginx
+
+Installation
+============
+
+Clone the repository into your server.
+
+.. code-block::
+
+    git clone git@github.com:Thaerious/trivia-server.git
+    cd trivia-server
+
+Setup the reverse proxy for NGINX.
+Add the following to the appropriate sites-available file (in the server block).
+
+.. code-block::
+
+    location /trivia/ {
+        proxy_pass http://127.0.0.1:8000/;
+
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $host;
+        proxy_set_header X-Read-IP $remote_addr;
+
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+
+**Run the server manually.**
+
+Install the node packages with ``npm i``.
+
+When running the server the first time include the -b flag (``node . -b``) to generate html & js files:
+
+.. code-block::
+
+    user@frar:~/trivia-server$ node . -b
+    contestant_join
+    contestant_portal
+    editor
+    host
+    host_portal
+    launch_console
+    HTTP listener started on port 8000
+
+For permanent installation add the systemd settings file.
+
+.. code-block::
+
+    sudo cp accessory/trivia.service /etc/systemd/system
