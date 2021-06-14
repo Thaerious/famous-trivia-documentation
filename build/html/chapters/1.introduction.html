@@ -94,6 +94,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#quick-links">Quick Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#project-layout">Project Layout</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
@@ -190,6 +191,73 @@ The host can customize the questions which are stored with a Google account.</p>
 <li><p>Trivia Project Github Repository <a href="https://github.com/Thaerious/trivia-server" target="_blank">[GO]</a>.</p></li>
 <li><p>Nidget Project Github Repository <a href="https://github.com/Thaerious/Nidget" target="_blank">[GO]</a>.</p></li>
 </ul>
+</div>
+<div class="section" id="project-layout">
+<h1>Project Layout<a class="headerlink" href="#project-layout" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><p>accessory/ : Scripts and config files for setting up external services.</p></li>
+<li><p>coverage/ : Created by c8 test coverage.</p></li>
+<li><p>db/ : Database files.</p></li>
+<li><p>public/ : Directory express exposes / target of generated files.</p></li>
+<li><ul>
+<li><p>assets/ : Images, sounds, etc.</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p>scripts/jit/ : Just-in-time target directory.</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p>scripts/static/ : User-created (not-generated) scripts.</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p>styles/font/ : css font files</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p>styles/generated/ : scss generated files</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p>src/client/ : Page files, must be located here as the jit-browserify targets this directory.</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p>src/client/modules/ : Non-nidget, not root, js files.</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p>src/client/nidgets/ : Nidget script files from ejs /views/nidgets.</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p>src/server/ : Server side source files.</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p>src/styles/ : SCSS source files.</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p>test/ : test files</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p>test/data/ : data files specifically for tests.</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p>test/doNotRun/ : old/obsolete test files.</p></li>
+</ul>
+</li>
+<li><p>view/ : embedded-java-script (ejs) files.</p></li>
+<li><p>view/nidgets/ : ejs source files for Nidgets, these are embedded into ‘view’ files as templates.</p></li>
+<li><p>view/partials/ : ejs included files</p></li>
+<li><p>view/pages/ : root ejs files</p></li>
+</ul>
+</div></blockquote>
 </div>
 
 
